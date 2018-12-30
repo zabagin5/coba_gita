@@ -9,6 +9,9 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
+                <div class="box-header">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBrg">Tambah Barang</button>
+                </div>
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
@@ -52,6 +55,99 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="addBrg">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <form role="form" method="post" action="../proses/proses.php">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Form Tambah Barang</h4>
+      </div>
+      <div class="modal-body">
+            <div class="form-group">
+              <label>Nama Barang</label>
+              <input type="text" class="form-control" name="nm_barang" placeholder="nama barang">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Kategori</label>
+              <select name="kategori" class="form-control">
+                  <?php
+                    $tes = mysqli_query($koneksi,"SELECT * from data_kategori");
+                    while($tabel = mysqli_fetch_array($tes)){
+                ?>
+                <option value="<?php echo $tabel['id_kategori'];?>"><?php echo $tabel['nama_kategori'];?></option><?php } ?>
+              </select>
+            </div>
+              <div class="row">
+              <div class="col-sm-4">
+                  <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp.</span>
+                    <input type="text" class="form-control" name="hrg_pokok" placeholder="harga pokok">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                  <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp.</span>
+                    <input type="text" class="form-control" name="hrg_umum" placeholder="harga umum">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                  <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp.</span>
+                    <input type="text" class="form-control" name="hrg_resel" placeholder="harga reseller">
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Stok</label>
+                      <input type="number" min="0" class="form-control" name="stok">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Satuan</label>
+                      <select name="satuan" class="form-control">
+                          <?php
+                            $tes = mysqli_query($koneksi,"SELECT * from data_satuan");
+                            while($tabel = mysqli_fetch_array($tes)){
+                        ?>
+                        <option value="<?php echo $tabel['id_satuan'];?>"><?php echo $tabel['nama_satuan'];?></option><?php } ?>
+                      </select>
+                    </div>
+                </div>
+                  <div class="col-sm-4">
+                    <label>Expired</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" name="exp" class="form-control pull-right" id="datepicker">
+                    </div>
+                </div>
+              </div>
+            <div class="form-group">
+              <label>Keterangan</label>
+              <textarea class="form-control" rows="3" name="keterangan" placeholder=" ..."></textarea>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Kembali</button>
+        <button type="submit" name="addbrg" class="btn btn-primary">Selesai</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
 
 <!-- DataTables -->
 <!--
