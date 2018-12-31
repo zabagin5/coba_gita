@@ -75,7 +75,7 @@
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $_SESSION['idk']?> - kasir 1
+                  <?php echo $_SESSION['level']?> - <?php echo $_SESSION['idk']?>
 <!--                  <small>Member since Nov. 2012</small>-->
                 </p>
               </li>
@@ -409,6 +409,28 @@
       'autoWidth'   : false
     })
   })
+
+    //Date picker
+    $('#datepicker').datepicker({
+        dateFormat: "yyyy-mm-dd",
+        autoclose: true
+    })
+    
+    $(document).ready(function(){
+//        alert("tes");
+       $(".infodt").click(function(event){
+          $("#id_brg").val($(this).attr("id_brg"));
+          $("#nm_brg").val($(this).attr("nm_brg"));
+          $("#kateg").val($(this).attr("kateg"));
+          $("#hrg_pokok").val($(this).attr("hrg_pokok"));
+          $("#hrg_umum").val($(this).attr("hrg_umum"));
+          $("#hrg_reseller").val($(this).attr("hrg_reseller"));
+          $("#stok").val($(this).attr("stok"));
+          $("#satuan").val($(this).attr("satuan"));
+          $("#exp").val($(this).attr("exp"));
+          $("#coba").val($(this).attr("coba"));
+       });
+    });
 </script>
 </body>
 </html>
